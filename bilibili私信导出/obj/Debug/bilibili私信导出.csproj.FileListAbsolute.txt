@@ -1,0 +1,10 @@
+C:\Users\康\source\repos\bilibili私信导出\bilibili私信导出\bin\Debug\bilibili私信导出.exe
+C:\Users\康\source\repos\bilibili私信导出\bilibili私信导出\bin\Debug\bilibili私信导出.pdb
+C:\Users\康\source\repos\bilibili私信导出\bilibili私信导出\obj\Debug\bilibili私信导出.csprojAssemblyReference.cache
+C:\Users\康\source\repos\bilibili私信导出\bilibili私信导出\obj\Debug\bilibili私信导出.Form1.resources
+C:\Users\康\source\repos\bilibili私信导出\bilibili私信导出\obj\Debug\bilibili私信导出.Properties.Resources.resources
+C:\Users\康\source\repos\bilibili私信导出\bilibili私信导出\obj\Debug\bilibili私信导出.csproj.GenerateResource.cache
+C:\Users\康\source\repos\bilibili私信导出\bilibili私信导出\obj\Debug\bilibili私信导出.csproj.CoreCompileInputs.cache
+C:\Users\康\source\repos\bilibili私信导出\bilibili私信导出\obj\Debug\bilibili私信导出.exe
+C:\Users\康\source\repos\bilibili私信导出\bilibili私信导出\obj\Debug\bilibili私信导出.pdb
+C:\Users\康\source\repos\bilibili私信导出\bilibili私信导出\bin\Debug\bilibili私信导出.exe.config

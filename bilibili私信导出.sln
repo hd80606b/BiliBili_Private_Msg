@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bilibili私信导出", "bilibili私信导出\bilibili私信导出.csproj", "{818565E5-3C94-48CE-A0D6-85E2AEE2DB47}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{818565E5-3C94-48CE-A0D6-85E2AEE2DB47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{818565E5-3C94-48CE-A0D6-85E2AEE2DB47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{818565E5-3C94-48CE-A0D6-85E2AEE2DB47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{818565E5-3C94-48CE-A0D6-85E2AEE2DB47}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {22C3D351-C953-4058-83A5-109681B6A1BC}
+	EndGlobalSection
+EndGlobal
