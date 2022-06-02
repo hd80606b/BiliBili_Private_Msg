@@ -15,3 +15,4 @@
 ### 思路/博客/其他
 * 关于该API的详情请见 [哔哩哔哩-API收集整理](https://github.com/SocialSisterYi/bilibili-API-collect/blob/master/message/private_msg.md)
 * 思路等请见[博客](https://hd80606b.com/bilibili-message/)<br />
+* ~~你问我为什么要放打包文件，因为单放exe文件会报不安全~~
