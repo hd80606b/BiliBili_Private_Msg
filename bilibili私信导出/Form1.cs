@@ -63,7 +63,7 @@ namespace bilibili私信导出
 
             try
             {
-                HttpWebRequest req = (HttpWebRequest)WebRequest.Create("https://api.vc.bilibili.com/svr_sync/v1/svr_sync/fetch_session_msgs?size=20&build=0&mobi_app=web&sender_device_id=1&talker_id="+ textBox2.Text + "&session_type="+ session_type);
+                HttpWebRequest req = (HttpWebRequest)WebRequest.Create("https://api.vc.bilibili.com/svr_sync/v1/svr_sync/fetch_session_msgs?size=200&build=0&mobi_app=web&sender_device_id=1&talker_id="+ textBox2.Text + "&session_type="+ session_type);
                 req.Method = "GET";
                 req.Headers["Cookie"] = textBox1.Text;
                 HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
