@@ -1,5 +1,5 @@
 # BiliBili_Private_Msg
-哔哩哔哩私信私信导出工具，同时支持导出已经被撤回的/无法查看的消息
+哔哩哔哩私信私信导出工具，同时支持导出已经被撤回的/无法查看的消息（不包含私信存档）
 
 ## 环境
 环境：.NET Framework 4.0 <br />
@@ -15,4 +15,6 @@
 ### 思路/博客/其他
 * 关于该API的详情请见 [哔哩哔哩-API收集整理](https://github.com/SocialSisterYi/bilibili-API-collect/blob/master/message/private_msg.md)
 * 思路等请见[博客](https://hd80606b.com/bilibili-message/)<br />
+* 目前接口有所限制，最高只能导出前200条，需要一个更多消息的账号来测试
 * ~~你问我为什么要放打包文件，因为单放exe文件会报不安全~~
+* ~~远古代码，当初为什么没有做成控制台应用？反正能用就行~~
