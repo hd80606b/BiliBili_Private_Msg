@@ -5,6 +5,7 @@
 环境：.NET Framework 4.0  或 python 3.10.5<br />
 
 ### 操作
+ (推荐使用python版本，最后返回的结果是正常显示的消息，而.net版未做过滤，最后会是json形式)
  1.运行exe或使用python文件夹下的BiliBili_Private_Msg.py<br />
  2.通过游览器F12查看自己的Cookie，填入Cookie<br />
  3.选择类型，需要导出的消息是私信还是应援团<br />
