@@ -11,7 +11,7 @@
  4.填入对方的UID或MID，如下图，导出与哔哩哔哩UP主执事的聊天记录，则填235555226<br />
 ![MID](https://www.z4a.net/images/2022/06/03/QQ20220603000417.png)
  5.点击导出，当提示成功或已保存文件即可在exe/py文件所在的文件夹找到对应的TXT文件<br />
- 6.（可选）如果要使用python版本导出应援团的消息，请将session_type的值设置为2
+ 6.(可选)如果要使用python版本导出应援团的消息，请将session_type的值设置为2
 ### 思路/博客/其他
 * 关于该API的详情请见 [哔哩哔哩-API收集整理](https://github.com/SocialSisterYi/bilibili-API-collect/blob/master/docs/message/private_msg.md)
 * 思路等请见[博客](https://hd80606b.com/bilibili-message/)<br />
