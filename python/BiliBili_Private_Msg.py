@@ -31,9 +31,13 @@ while(1):
     # # 将数据保存到文件
     # with open("data.json", "w") as file:
         # json.dump(data, file)
-    with open(param2+'.txt', 'w') as f:
+    with open(param2+'.txt', 'w', encoding='utf-8') as f:
         for message in reversed(messages):
-            content = json.loads(message["content"])["content"]
+            content = message["content"]
+            if isinstance(content, int):
+                content = str(content)
+            if "content" in content:
+                content = json.loads(content)["content"]
             content = content.replace('\n', ' ')
             UID = json.loads(json.dumps(message["sender_uid"]))
             Timestamp = json.loads(json.dumps(message["timestamp"]))
