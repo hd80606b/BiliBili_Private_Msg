@@ -20,7 +20,7 @@ namespace bilibili私信导出
         /// <returns></returns>
         public DateTime TimestampToDataTime(long unixTimeStamp)
         {
-            System.DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1)); // 当			  地时区
+            System.DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1)); // 当地时区
             DateTime dt = startTime.AddSeconds(unixTimeStamp);
             System.Console.WriteLine(dt.ToString("yyyy/MM/dd HH:mm:ss:ffff"));
             return dt;
@@ -60,31 +60,42 @@ namespace bilibili私信导出
             {
                 File.Delete(path + textBox2.Text + ".txt");
             }
-
+            long end = 0;
+            bilibilisixin.Rootobject root = new bilibilisixin.Rootobject();
             try
             {
-                HttpWebRequest req = (HttpWebRequest)WebRequest.Create("https://api.vc.bilibili.com/svr_sync/v1/svr_sync/fetch_session_msgs?size=20&build=0&mobi_app=web&sender_device_id=1&talker_id="+ textBox2.Text + "&session_type="+ session_type);
-                req.Method = "GET";
-                req.Headers["Cookie"] = textBox1.Text;
-                HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
-                StreamReader stream = new StreamReader(resp.GetResponseStream(),Encoding.UTF8);
-                string result = stream.ReadToEnd();
-               JavaScriptSerializer js = new JavaScriptSerializer();
-                bilibilisixin.Rootobject root = js.Deserialize<bilibilisixin.Rootobject>(result);
-                if(root.code ==0)
+                do
                 {
-                    for(int num = 0;num<root.data.messages.Length;num++)
+                    HttpWebRequest req = (HttpWebRequest)WebRequest.Create("https://api.vc.bilibili.com/svr_sync/v1/svr_sync/fetch_session_msgs?size=200&build=0&mobi_app=web&begin_seqno=0&end_seqno="+end+"&sender_device_id=1&talker_id=" + textBox2.Text + "&session_type=" + session_type);
+                    req.Method = "GET";
+                    req.Headers["Cookie"] = textBox1.Text;
+                    HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
+                    StreamReader stream = new StreamReader(resp.GetResponseStream(), Encoding.UTF8);       
+                    string result = stream.ReadToEnd();
+                    if(result.Contains("null"))
                     {
-                        text_dx = TimestampToDataTime(root.data.messages[num].timestamp)+" UID" + root.data.messages[num].sender_uid.ToString() + "说：" + root.data.messages[num].content;
-                        LogWrite.DataWrite(text_dx, path, textBox2.Text + ".txt");
+                        return;
                     }
-                    MessageBox.Show("成功");
-                }
-                else
-                {
-                    MessageBox.Show(root.message);
-                }
-              
+                    JavaScriptSerializer js = new JavaScriptSerializer();
+                    root = js.Deserialize<bilibilisixin.Rootobject>(result);
+                    if (root.code == 0)
+                    {
+                        for (int num = 0; num < root.data.messages.Length; num++)
+                        {
+                            text_dx = TimestampToDataTime(root.data.messages[num].timestamp) + " UID" + root.data.messages[num].sender_uid.ToString() + "说：" + root.data.messages[num].content;
+                           using (StreamWriter writer = new StreamWriter(@".\" +textBox2.Text +".txt",true))
+                            {
+                                writer.WriteLine(text_dx);
+                            }
+                        }                        
+                        end = root.data.min_seqno;
+                    }
+                    else
+                    {
+                        MessageBox.Show(root.message);
+                    }
+                } while (root.data.messages.Length>0);
+                MessageBox.Show("成功");
             }
             catch(Exception abc)
             {

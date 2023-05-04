@@ -31,19 +31,7 @@ namespace bilibili私信导出
                     writer.WriteLine(logstring);
                 }
 
-                long size = 0;
-
-                //获取文件大小
-                using (FileStream file = System.IO.File.OpenRead(path))
-                {
-                    size = file.Length;//文件大小。byte
-                }
-
-                //判断文件大于20M，自动删除。
-                if (size > (1024 * 4 * 512 * 10))
-                {
-                    System.IO.File.Delete(path);
-                }
+               
             }
             catch
             {
