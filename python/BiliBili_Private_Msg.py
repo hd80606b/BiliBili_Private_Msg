@@ -18,16 +18,20 @@ end = 0
 cookies = {
     "param1": param1
 }
+
+messages = []  # 保存所有的消息
+
 while(1):
     # 发送GET请求
     url = "https://api.vc.bilibili.com/svr_sync/v1/svr_sync/fetch_session_msgs?size=200&build=0&mobi_app=web&begin_seqno=0&end_seqno="+str(end)+"&sender_device_id=1&talker_id="+ param2 + "&session_type=1"
     response = requests.get(url, cookies=cookies)
     # 解析JSON数据
     parsed_data = json.loads(response.text)
-    messages = parsed_data["data"]["messages"]
-    if not messages:
+    new_messages = parsed_data["data"]["messages"]
+    if not new_messages:
         break
     end = parsed_data["data"]["min_seqno"]
+    messages.extend(new_messages)  # 将新消息添加到消息列表中
     # # 将数据保存到文件
     # with open("data.json", "w") as file:
         # json.dump(data, file)
