@@ -48,7 +48,7 @@ while(1):
         talker_id = session["talker_id"]
         talker_ids.append(talker_id)
     last_session = List_messages[-1]
-    end_list = last_session["last_msg"]["timestamp"]
+    end_list = last_session["session_ts"]
 
 # 创建文件夹
 os.makedirs(folder_path, exist_ok=True)
