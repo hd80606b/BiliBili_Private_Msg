@@ -29,7 +29,15 @@ end = 0
 cookies = {
     "param1": param1
 }
-
+headers = {
+        'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+        'Accept-Language': 'zh-CN,zh;q=0.9',
+        'Sec-Ch-Ua': '"Not_A Brand";v="8", "Chromium";v="120", "Microsoft Edge";v="120"',
+        'Origin': 'https://www.bilibili.com',
+        'Content-Type': 'application/json; charset=utf-8',
+        'Connection': 'keep-alive'
+}
 messages = []  # 保存所有的消息
 talker_ids = []  # 用于存储提取的talker_id
 current_time = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S") # 获取当前时间作为文件夹名
@@ -38,7 +46,7 @@ folder_path = os.path.join(".", current_time)  # 当前目录
 # 拿列表
 while(1):
     url = "https://api.vc.bilibili.com/session_svr/v1/session_svr/get_sessions?session_type=1&group_fold=1&unfollow_fold=0&sort_rule=2&end_ts="+str(end_list)+"&build=0&mobi_app=web&size=200"
-    response = requests.get(url, cookies=cookies)
+    response = requests.get(url, cookies=cookies, headers=headers)
     # 解析JSON数据
     parsed_data = json.loads(response.text)
     List_messages = parsed_data["data"]["session_list"]
@@ -60,7 +68,7 @@ for talker_id in talker_ids:
     while(1):
         # 发送GET请求
         url = "https://api.vc.bilibili.com/svr_sync/v1/svr_sync/fetch_session_msgs?size=200&build=0&mobi_app=web&begin_seqno=0&end_seqno="+str(end)+"&sender_device_id=1&talker_id="+ str(talker_id) + "&session_type=1"
-        response = requests.get(url, cookies=cookies)
+        response = requests.get(url, cookies=cookies, headers=headers)
         # 解析JSON数据
         parsed_data = json.loads(response.text)
         new_messages = parsed_data["data"]["messages"]
@@ -83,5 +91,3 @@ for talker_id in talker_ids:
     end = 0
     #time.sleep(2)  # 这里延时 2 秒
 print("数据已全部保存完毕")
-
-
