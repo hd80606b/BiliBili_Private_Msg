@@ -28,15 +28,17 @@ headers = {
         'Content-Type': 'application/json; charset=utf-8',
         'Connection': 'keep-alive'
 }
+
+
 messages = []  # 保存所有的消息
 
 while(1):
     # 发送GET请求
     url = "https://api.vc.bilibili.com/svr_sync/v1/svr_sync/fetch_session_msgs?size=200&build=0&mobi_app=web&begin_seqno=0&end_seqno="+str(end)+"&sender_device_id=1&talker_id="+ param2 + "&session_type=1"
     response = requests.get(url, cookies=cookies, headers=headers)
-    #print(response.text)
     # 解析JSON数据
     parsed_data = json.loads(response.text)
+    #print(response.text)
     new_messages = parsed_data["data"]["messages"]
     if not new_messages:
         break
@@ -50,9 +52,15 @@ while(1):
             content = message["content"]
             if isinstance(content, int):
                 content = str(content)
-            if "content" in content:
-                content = json.loads(content)["content"]
+            content_json = json.loads(content)
+            if isinstance(content_json, int):
+                content_json = str(content_json)
+            if "content" in content_json:
+                content = content_json["content"]
+            if "url" in content_json and "height" in content_json and "width" in content_json:
+                content = f'图片：{content_json["url"]}, 高度: {content_json["height"]}, 宽度: {content_json["width"]}'
             content = content.replace('\n', ' ')
+
             UID = json.loads(json.dumps(message["sender_uid"]))
             Timestamp = json.loads(json.dumps(message["timestamp"]))
             f.write(str(timestamp_to_datetime(Timestamp))+'\x20'+str(UID) + '说：\x20' + content + '\n')
