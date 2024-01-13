@@ -52,13 +52,13 @@ while(1):
             content = message["content"]
             if isinstance(content, int):
                 content = str(content)
-            content_json = json.loads(content)
-            if isinstance(content_json, int):
-                content_json = str(content_json)
-            if "content" in content_json:
-                content = content_json["content"]
-            if "url" in content_json and "height" in content_json and "width" in content_json:
-                content = f'图片：{content_json["url"]}, 高度: {content_json["height"]}, 宽度: {content_json["width"]}'
+            if "content" in content:
+                try:
+                    content = json.loads(content)["content"]
+                except KeyError:
+                    #print("出错行：",content)
+                    content = "default"
+                    #print("出错结束")
             content = content.replace('\n', ' ')
 
             UID = json.loads(json.dumps(message["sender_uid"]))
