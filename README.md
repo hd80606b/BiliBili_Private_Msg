@@ -18,7 +18,7 @@
 * 使用BiliBili_Private_Msg(ALL).py时，如果私信列表中的人数过多，请自行取消`time.sleep(2)`的注释，避免ip被ban
 * 关于该API的详情请见 [哔哩哔哩-API收集整理](https://github.com/SocialSisterYi/bilibili-API-collect/blob/master/docs/message/private_msg.md)
 * 思路等请见[博客](https://hd80606b.com/bilibili-message/)<br />
-* 在V1.1.1中添加了请求头，修正了请求被禁止的问题（C#版本暂未进行更改，请优先使用python脚本）
+* 在V1.1.1中添加了请求头，修正了请求被禁止的问题，暂时让预约直播的消息变更为了default（C#版本暂未进行更改，请优先使用python脚本）
 * 在V1.1.0中添加了新的参数从根本上修正了只返回前200条消息的问题
 * 在即将到来的V1.1.1中也会把C#版本的程序将被重构，添加**一键导出私信列表中所有人的消息**的功能与修正**请求被禁止**的问题
 * ~~你问我为什么要放打包文件，因为单放exe文件会报不安全~~
