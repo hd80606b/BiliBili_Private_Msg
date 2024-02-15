@@ -8,7 +8,7 @@
  (推荐使用python版本，最后返回的结果是正常显示的消息，而.net版未做过滤，最后会是json形式)<br />
  1.针对性导出请运行exe或使用python文件夹下的BiliBili_Private_Msg.py<br />
  BiliBili_Private_Msg(ALL).py是将整个私信列表中所有人的消息一块导出到由时间命名的文件夹中<br />
- 2.通过游览器F12查看自己的Cookie，填入Cookie<br />
+ 2.通过游览器F12查看自己的Cookie，填入Cookie，如何寻找cookie，请看[通过游览器开发者工具（F12）查看自己的Cookie](./Get_cookie/README.md)<br />
  3.选择类型，需要导出的消息是私信还是应援团<br />
  4.填入对方的UID或MID，如下图，导出与哔哩哔哩UP主执事的聊天记录，则填235555226<br />
 ![MID](https://www.z4a.net/images/2022/06/03/QQ20220603000417.png)
