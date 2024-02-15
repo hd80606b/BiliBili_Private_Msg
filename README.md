@@ -15,7 +15,6 @@
  5.点击导出，当提示成功或已保存文件即可在exe/py文件所在的文件夹找到对应的TXT文件（或时间文件夹）<br />
  6.(可选)如果要使用python版本导出应援团的消息，请将session_type的值设置为2
 ### 思路/博客/注意/其他
-* 重要：不要使用document.cookie在控制台取cookie，其中的SESSDATA被设置httponly属性了，取不到会导致无法验证身份
 * 使用BiliBili_Private_Msg(ALL).py时，如果私信列表中的人数过多，请自行取消`time.sleep(2)`的注释，避免ip被ban
 * 关于该API的详情请见 [哔哩哔哩-API收集整理](https://github.com/SocialSisterYi/bilibili-API-collect/blob/master/docs/message/private_msg.md)
 * 思路等请见[博客](https://hd80606b.com/bilibili-message/)<br />
