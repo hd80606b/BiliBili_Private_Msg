@@ -1,0 +1,13 @@
+C:\Users\康\source\repos\BiliBili_Private_Msg\bilibili私信导出\bin\Release\bilibili私信导出.exe.config
+C:\Users\康\source\repos\BiliBili_Private_Msg\bilibili私信导出\bin\Release\bilibili私信导出.exe
+C:\Users\康\source\repos\BiliBili_Private_Msg\bilibili私信导出\bin\Release\bilibili私信导出.pdb
+C:\Users\康\source\repos\BiliBili_Private_Msg\bilibili私信导出\bin\Release\Newtonsoft.Json.dll
+C:\Users\康\source\repos\BiliBili_Private_Msg\bilibili私信导出\bin\Release\Newtonsoft.Json.xml
+C:\Users\康\source\repos\BiliBili_Private_Msg\bilibili私信导出\obj\Release\bilibili私信导出.csprojAssemblyReference.cache
+C:\Users\康\source\repos\BiliBili_Private_Msg\bilibili私信导出\obj\Release\bilibili私信导出.Form1.resources
+C:\Users\康\source\repos\BiliBili_Private_Msg\bilibili私信导出\obj\Release\bilibili私信导出.Properties.Resources.resources
+C:\Users\康\source\repos\BiliBili_Private_Msg\bilibili私信导出\obj\Release\bilibili私信导出.csproj.GenerateResource.cache
+C:\Users\康\source\repos\BiliBili_Private_Msg\bilibili私信导出\obj\Release\bilibili私信导出.csproj.CoreCompileInputs.cache
+C:\Users\康\source\repos\BiliBili_Private_Msg\bilibili私信导出\obj\Release\bilibili私信导出.csproj.CopyComplete
+C:\Users\康\source\repos\BiliBili_Private_Msg\bilibili私信导出\obj\Release\bilibili私信导出.exe
+C:\Users\康\source\repos\BiliBili_Private_Msg\bilibili私信导出\obj\Release\bilibili私信导出.pdb
