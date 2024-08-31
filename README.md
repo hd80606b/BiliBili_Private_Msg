@@ -5,7 +5,7 @@
 环境：.NET Framework 4.0  或 python 3.10.5<br />
 
 ### 操作
- (推荐使用python版本，最后返回的结果是正常显示的消息，而.net版未做过滤，最后会是json形式)<br />
+ (如要导出所有联系人的私信消息，请使用python版本)<br />
  1.针对性导出请运行exe或使用python文件夹下的BiliBili_Private_Msg.py<br />
  BiliBili_Private_Msg(ALL).py是将整个私信列表中所有人的消息一块导出到由时间命名的文件夹中<br />
  2.通过游览器F12查看自己的Cookie，填入Cookie，如何寻找cookie，请看[通过游览器开发者工具（F12）查看自己的Cookie](./Get_cookie/README.md)<br />
