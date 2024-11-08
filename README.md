@@ -26,7 +26,7 @@
 * ~~远古代码，为什么还是4.0？为什么当初没有做成控制台应用？~~ 所以在这里追加了python版本
 * 本人B站UID：2239814，如您觉得提issue太麻烦，可直接B站私信我
 ### 感谢
-* [@ccsugar](https://github.com/ccsugar) 为BiliBili_Private_Msg(ALL).py 添加私信对象昵称至导出文件名；并将导出文件内私信对象的Uid替换为B站昵称
+* [@ccsugar](https://github.com/ccsugar) 为BiliBili_Private_Msg(ALL).py添加私信对象昵称提供思路和接口
 ---
 #### 已知问题
 * 被撤回的消息现在疑似无法再读取了（记一笔，B站在24年1月似乎修复了）
