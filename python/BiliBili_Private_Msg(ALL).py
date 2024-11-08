@@ -40,6 +40,7 @@ headers = {
 }
 messages = []  # 保存所有的消息
 talker_ids = []  # 用于存储提取的talker_id
+talker_names = []  # 用于存储talker_id对应的昵称
 current_time = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S") # 获取当前时间作为文件夹名
 folder_path = os.path.join(".", current_time)  # 当前目录
 
@@ -52,9 +53,13 @@ while(1):
     List_messages = parsed_data["data"]["session_list"]
     if not List_messages:
         break
-    for session in List_messages:
+    for session in List_messages:#获取talker_id和talker_name
         talker_id = session["talker_id"]
         talker_ids.append(talker_id)
+        url = "https://api.vc.bilibili.com/account/v1/user/cards?uids=" +str(talker_id)
+        usersinfo_response = requests.get(url, cookies=cookies,headers=headers)
+        parsed_data = json.loads(usersinfo_response.text)
+        talker_names.append(parsed_data["data"][0]["name"])
     last_session = List_messages[-1]
     end_list = last_session["session_ts"]
 
@@ -62,8 +67,8 @@ while(1):
 os.makedirs(folder_path, exist_ok=True)
 
 # 使用保存的talker_ids进行GET请求
-for talker_id in talker_ids: 
-    file_name = str(talker_id) +".txt"
+for talker_id,talker_name in list(zip(talker_ids, talker_names)): 
+    file_name = talker_name+ '_' +str(talker_id) +".txt"
     file_path = os.path.join(folder_path, file_name)
     while(1):
         # 发送GET请求
@@ -109,9 +114,13 @@ for talker_id in talker_ids:
                 
                 
                 UID = json.loads(json.dumps(message["sender_uid"]))
+                if UID == talker_id:#判断消息发送者
+                    sender_name = talker_name
+                else:
+                    sender_name = "自己_"+ str(UID)
                 Timestamp = json.loads(json.dumps(message["timestamp"]))
-                f.write(str(timestamp_to_datetime(Timestamp))+'\x20'+str(UID) + '说：\x20' + content + '\n')
-    print("数据已保存到"+str(talker_id)+'.txt中')
+                f.write(str(timestamp_to_datetime(Timestamp))+'\x20'+sender_name + '说：\x20' + content + '\n')
+    print("数据已保存到"+talker_name+ '_' +str(talker_id)+'.txt中')
     messages.clear()
     end = 0
     #time.sleep(2)  # 这里延时 2 秒
