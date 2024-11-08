@@ -56,10 +56,16 @@ while(1):
     for session in List_messages:#获取talker_id和talker_name
         talker_id = session["talker_id"]
         talker_ids.append(talker_id)
-        url = "https://api.vc.bilibili.com/account/v1/user/cards?uids=" +str(talker_id)
-        usersinfo_response = requests.get(url, cookies=cookies,headers=headers)
-        parsed_data = json.loads(usersinfo_response.text)
-        talker_names.append(parsed_data["data"][0]["name"])
+        if "account_info" in session:
+            talker_name = session["account_info"]["name"]
+            print(talker_name)
+        else:
+            url = "https://api.vc.bilibili.com/account/v1/user/cards?uids=" +str(talker_id)
+            usersinfo_response = requests.get(url, cookies=cookies,headers=headers)
+            parsed_data = json.loads(usersinfo_response.text)
+            talker_name = parsed_data["data"][0]["name"]
+            print(talker_name)
+        talker_names.append(talker_name)
     last_session = List_messages[-1]
     end_list = last_session["session_ts"]
 
