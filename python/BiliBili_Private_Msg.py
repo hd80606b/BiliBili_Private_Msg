@@ -80,5 +80,9 @@ while(1):
             UID = json.loads(json.dumps(message["sender_uid"]))
             Timestamp = json.loads(json.dumps(message["timestamp"]))
             f.write(str(timestamp_to_datetime(Timestamp))+'\x20'+str(UID) + '说：\x20' + content + '\n')
+
+    #使用has_more来判断，当为 0 时，说明当前响应已是最后一页
+    if parsed_data["data"].get("has_more", 0) == 0:
+        break
  
 print("数据已保存到"+param2+'.txt中')
