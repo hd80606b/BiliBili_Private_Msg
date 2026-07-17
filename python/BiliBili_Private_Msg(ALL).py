@@ -41,6 +41,11 @@ headers = {
 messages = []  # 保存所有的消息
 talker_ids = []  # 用于存储提取的talker_id
 talker_names = []  # 用于存储talker_id对应的昵称
+system_account_names = {
+    "哔哩哔哩智能机", "UP主小助手", "哔哩哔哩创作中心","装扮小姐姐","哔哩哔哩大会员",
+    "直播小喇叭", "社区小助手", "哔哩哔哩公益","哔哩哔哩智能机","支付小助手","小站助手",
+    "哔哩哔哩数字周边","哔哩哔哩UP主服务中心"
+} # 用于存储需要屏蔽的昵称
 current_time = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S") # 获取当前时间作为文件夹名
 folder_path = os.path.join(".", current_time)  # 当前目录
 
@@ -55,16 +60,20 @@ while(1):
         break
     for session in List_messages:#获取talker_id和talker_name
         talker_id = session["talker_id"]
-        talker_ids.append(talker_id)
         if "account_info" in session:
             talker_name = session["account_info"]["name"]
-            print(talker_name)
         else:
             url = "https://api.vc.bilibili.com/account/v1/user/cards?uids=" +str(talker_id)
             usersinfo_response = requests.get(url, cookies=cookies,headers=headers)
             parsed_data = json.loads(usersinfo_response.text)
             talker_name = parsed_data["data"][0]["name"]
-            print(talker_name)
+
+        if talker_name in system_account_names:
+            print(f'系统账号 "{talker_name}" 无须保存，已跳过。')
+            continue
+
+        print(talker_name)
+        talker_ids.append(talker_id)
         talker_names.append(talker_name)
     last_session = List_messages[-1]
     end_list = last_session["session_ts"]
@@ -126,6 +135,10 @@ for talker_id,talker_name in list(zip(talker_ids, talker_names)):
                     sender_name = "自己_"+ str(UID)
                 Timestamp = json.loads(json.dumps(message["timestamp"]))
                 f.write(str(timestamp_to_datetime(Timestamp))+'\x20'+sender_name + '说：\x20' + content + '\n')
+
+        #使用has_more来判断，当为 0 时，说明当前响应已是最后一页
+        if parsed_data["data"].get("has_more", 0) == 0:
+            break
     print("数据已保存到"+talker_name+ '_' +str(talker_id)+'.txt中')
     messages.clear()
     end = 0
